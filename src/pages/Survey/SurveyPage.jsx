@@ -13,8 +13,7 @@ import {
 } from "react-circular-progressbar";
 import Card from "../../components/circularProgressBarWithLabel/card/Card";
 import Button from "../../components/circularProgressBarWithLabel/card/button/Button";
-import Vehicles from "./vehicles/PromptContainer";
-import PromptContainer from "./vehicles/PromptContainer";
+import PromptContainer from "./promptContainer/PromptContainer";
 import { useNavigate } from "react-router-dom";
 const SurveyPage = () => {
   const navigate = useNavigate();
