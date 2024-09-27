@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./SurveyPage.css";
 import surveypage1 from "/src/assets/SurveyPage1.png";
 import surveypage2 from "/src/assets/SurveyPage2.png";
@@ -13,19 +13,14 @@ import {
 } from "react-circular-progressbar";
 import Card from "../../components/circularProgressBarWithLabel/card/Card";
 import Button from "../../components/circularProgressBarWithLabel/card/button/Button";
+import Vehicles from "./vehicles/PromptContainer";
+import PromptContainer from "./vehicles/PromptContainer";
 const SurveyPage = () => {
   const [score, setScore] = useState(0);
   const [currStep, setCurrStep] = useState(1);
+  const [prevStep,setPrevStep] = useState(1);
+  const [isLast,setIsLast] = useState(false);
   const totalSteps = 4;
-  const [currQuestion,setCurrQuestion] = useState(0);
-  const [questions,setQuestions] = useState([
-    [
-        {q:"Choose the vehicles you use for commuting ? "},
-        {q:"How many Vehicles do you own?"},
-       {q: "What type of fuel do you use?"},
-       {q:"How many KM you drive per week?"}
-    ]
-  ])
   const [backgroundImages, setBackgroundImages] = useState([
     {
       score: 0,
@@ -52,7 +47,6 @@ const SurveyPage = () => {
       img_url: surveypage6,
     },
   ]);
-
   return (
     <div className="container">
       <div className="inner-container ">
@@ -73,7 +67,7 @@ const SurveyPage = () => {
           <div className="progressBar">
             <CircularProgressbarWithChildren
               maxValue={totalSteps}
-              value={currStep}
+              value={Math.floor(currStep)}
               styles={buildStyles({
                 pathTransitionDuration: 0.5,
                 strokeWidth: 10,
@@ -82,13 +76,30 @@ const SurveyPage = () => {
                 pathColor: "#FEA062",
               })}
             >
-              <div className="stepDisplay">{`${currStep}/${totalSteps}`}</div>
+              <div className="stepDisplay">{`${Math.floor(currStep)}/${totalSteps}`}</div>
             </CircularProgressbarWithChildren>
           </div>
         </div>
-      
+       <div className="stepPageContainer">
+       <PromptContainer setIsLast={setIsLast} setCurrStep={setCurrStep} currStep={currStep}  />
+       </div>
         <div className="buttonsContainer">
-        <Button content={"Next"} />
+        { !isLast && currStep<totalSteps+0.9 &&
+          <Button 
+          onClick={()=>{
+            setPrevStep(currStep)
+            setCurrStep((prev)=>(prev+0.1))
+          }}
+          content={"Next"} />
+          }
+        {  !isLast &&  currStep>1 && currStep<totalSteps+1 &&
+          <Button
+          onClick={()=>{
+              setCurrStep(prevStep)
+          }}
+          content={"Back"} />}
+       { isLast &&
+        <Button content={"Calculate Carbon Footprint"}/>}
         </div>
         
       </div>

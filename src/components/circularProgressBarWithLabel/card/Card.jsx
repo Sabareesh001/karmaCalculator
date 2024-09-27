@@ -3,9 +3,9 @@ import './Card.css';
 const Card  = ({content,title,backgroundColor,borderColor})=>{
     return(
         <div style={{backgroundColor:backgroundColor,border:borderColor&&`solid ${borderColor}`}} className='cardContainer'>
-          <div className='icon'>
+         {content && <div className='icon'>
             {content}
-          </div>
+          </div>}
           <div className='title'>
             {title}
           </div>
