@@ -9,8 +9,10 @@ import surveypage6 from "/src/assets/surveypage6.png";
 import car from "/src/assets/car.png";
 import motor from "/src/assets/Motor Scooter.png";
 import bicycle from "/src/assets/Bicycle.png"
+import level1page2 from "../../components/level1page2/level1page2";
 const SurveyPage = () => {
   const [score, setScore] = useState(0);
+  const [isNextPage, setIsNextPage] = useState(false);
   const [backgroundImages, setBackgroundImages] = useState([
     {
       score: 0,
@@ -39,8 +41,10 @@ const SurveyPage = () => {
   ]);
 
   const handleNext = () => {
+    setIsNextPage(<level1Page2/>); 
+    
+  };
 
-  }
   return (
     <>
     <div>
@@ -55,34 +59,12 @@ const SurveyPage = () => {
                   }).img_url
                 }
               />
-            }
-          </div>
-          <div className="question-container">
-            <div className="question">
-              Choose the vehicle you use for commuting?
-            </div>
-            <div className="options">
-              <div className="bicylce">
-                <img src={bicycle} alt="bicycle"/>
-                <div style={{paddingTop:'7px'}}>Cycle</div>
-              </div>
-              <div className="two-wheeler">
-              <img src={motor} alt="bicycle"/>
-              <div style={{paddingTop:'7px'}}>Two-wheeler</div>
-              </div>
-              <div className="car">
-              <img src={car} alt="bicycle"/>
-              <div style={{paddingTop:'7px'}}>Car</div>
+              }
               </div>
               </div>
-            </div>
-            <div className="next" onClick={handleNext}>Next</div>
-          </div>
-        </div>
-      </div>
-    
-    </>
-  );
-};
-
+              </div>
+              </div>
+              </>
+  )
+}
 export default SurveyPage;
