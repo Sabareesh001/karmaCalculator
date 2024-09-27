@@ -15,7 +15,9 @@ import Card from "../../components/circularProgressBarWithLabel/card/Card";
 import Button from "../../components/circularProgressBarWithLabel/card/button/Button";
 import Vehicles from "./vehicles/PromptContainer";
 import PromptContainer from "./vehicles/PromptContainer";
+import { useNavigate } from "react-router-dom";
 const SurveyPage = () => {
+  const navigate = useNavigate();
   const [score, setScore] = useState(0);
   const [currStep, setCurrStep] = useState(1);
   const [prevStep,setPrevStep] = useState(1);
@@ -99,7 +101,7 @@ const SurveyPage = () => {
           }}
           content={"Back"} />}
        { isLast &&
-        <Button content={"Calculate Carbon Footprint"}/>}
+        <Button onClick={()=>{navigate('/karmareport')}} content={"Calculate Carbon Footprint"}/>}
         </div>
         
       </div>
