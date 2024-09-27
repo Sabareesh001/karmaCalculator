@@ -1,11 +1,11 @@
-import './ReportPage.css';
 
-const ReportPage = ()=>{
-    return(
-        <div>
-            <h1>{"Page 3 --> Report Page"}</h1>
-        </div>
-    )
-}
+
+const ReportPage = () => {
+	return (
+		<div>
+		report page
+		</div>
+	);
+};
 
 export default ReportPage;
