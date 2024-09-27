@@ -1,0 +1,21 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.parent{
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover; 
+  font-family: 'Excon-Bold';
+}
+.head{
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+.body{
+  height: 80%;
+}
