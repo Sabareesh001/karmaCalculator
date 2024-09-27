@@ -1,0 +1,9 @@
+.phoneView {
+  height: 100vh;
+  width: 46.18vh;
+}
+.layoutContainer {
+  display: flex;
+  background-color: white;
+  justify-content: center;
+}
