@@ -1,0 +1,21 @@
+.cardContainer{
+    background-color: rgb(186, 186, 186);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 60px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.cardContainer .icon{
+    font-size: 30px;
+}
+
+.cardContainer .title{
+    font-size: 10px;
+    font-weight: bold;
+}
