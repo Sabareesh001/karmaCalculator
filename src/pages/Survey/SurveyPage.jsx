@@ -7,10 +7,6 @@ const SurveyPage = ()=>{
         {
             score:0,
             img_url:'/src/assets/SurveyPage1.png'
-        },
-        {
-            score:10,
-
         }
     ])
     return(
