@@ -1,10 +1,15 @@
+import Layout from "../pages/layout/Layout";
 import publicRoutes from "./publicRoutes";
 
 import { useRoutes } from "react-router-dom";
 
 const Routes = ()=>{
     const exportRoutes = useRoutes([
-        ...publicRoutes
+        {
+            path:'/',
+            element:<Layout/>,
+            children:publicRoutes
+        }
     ])
 
     return exportRoutes;
