@@ -1,11 +1,13 @@
-.phoneView {
-	background-color: white;
-	height: 100vh;
-	width: 46.18vh;
+
+.phoneView{
+    background-color: white;
+    height: 100vh;
+    width:46.18vh ;
+}
+.layoutContainer{
+    color: rgb(255, 214, 138);
+    display: flex;
+    background-color: black;
+    justify-content: center;
 }
 
-.layoutContainer {
-	display: flex;
-	background-color: black;
-	justify-content: center;
-}
