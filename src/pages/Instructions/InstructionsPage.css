@@ -1,8 +1,137 @@
-@font-face {
-    font-family: 'Excon';
-    src: url('./assets/fonts/Excon.woff2') format('woff2'),
-         url('./assets/fonts/Excon.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
+.instruction-container {
+    width: 100%;
+    height: 100%;
+    background-color: #f0f4fa;
+  }
+  
+  .instruction-header {
+    width: 100%;
+    height: 32%;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+  }
+  
+  .instruction-title {
+    width: 85%;
+    height: 2%;
+    color: #0e70eb;
+    font-family: 'Excon, sans-serif';
+    font-weight: bolder;
+    font-size: 22px;
+    opacity: 1px;
+    text-align: center;
+    letter-spacing: -0.1px;
+    position: absolute;
+    margin-top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+  }
+  
+  .instruction-card {
+    width: 305px;
+    margin: 0 auto;
+    height: 369px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .instruction-step {
+    display: flex;
+    width: 303px;
+    height: 16px;
+    margin-bottom: 70px;
+  }
+  
+  .instruction-icon-container {
+    margin-left: 12px;
+    margin-top: 24px;
+    height: 61px;
+    width: 61px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+  }
+  
+  .instruction-icon {
+    height: 59.59px;
+    width: 59.43px;
+    border-radius: 8px;
+  }
+  
+  .instruction-step-content {
+    width: 230px;
+    margin-left: 12px;
+  }
+  
+  .instruction-step-title {
+    font-size: 0.8em;
+    color: #030911;
+    font-weight: 600;
+    font-family: 'Sarabun, sans-serif';
+    letter-spacing: 0px;
+    opacity: 1;
+    text-align: left;
+    margin-bottom: 6px;
+    margin-top: 24px;
+  }
+  
+  .instruction-step-description {
+    color: #60666f;
+    font-size: 0.76em;
+    font-family: 'Sarabun, sans-serif';
+    line-height: 17px;
+    text-align: left;
+    margin-top: 0px;
+  }
+  
+  .instruction-button-container {
+    display: flex;
+    margin-left: 16px;
+  }
+  
+  .instruction-button {
+    width: 133px;
+    height: 48px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+  }
+  
+  .instruction-button-later {
+    background-color: #e6eefa;
+    color: #0e70eb;
+    margin-top: 50px;
+  }
+  
+  .instruction-button-calculate {
+    background-color: #0e70eb;
+    color: #ffffff;
+    margin-top: 50px;
+    margin-left: 12px;
+  }
+  
+  .instruction-button-text {
+    font-size: 13px;
+    letter-spacing: -0.07px;
+    font-weight: 600;
+  }
+  
+  
+  .instruction-icon-container.brain {
+    background-color: #e2f1e6;
+  }
+  
+  .instruction-icon-container.co2 {
+    background-color: #fff7e8;
+  }
+  
+  .instruction-icon-container.earth {
+    background-color: #e2f1e6;
   }
   
