@@ -4,7 +4,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const GaugeChart = ({ karmavalue ,values}) => {
+const GaugeChart = ({ karmavalue, values }) => {
 	const data = {
 		labels: ["Commute", "Food", "Appliances"],
 		datasets: [
@@ -27,20 +27,21 @@ const GaugeChart = ({ karmavalue ,values}) => {
 		maintainAspectRatio: false,
 		plugins: {
 			tooltip: { enabled: false }, // Disable tooltip
-legend: {
-        display: true,  // Show the legend
-        position: "bottom",  // Position it below the chart
-        labels: {
-          font: {
-            size: 12,  // Font size for the legend labels
-            weight: "bold",  // Font weight
-				position: "relative",
-          },
-          color: "#000",  // Legend label text color
-          boxWidth: 20,  // Size of the box next to the label
-          padding: 20,   // Spacing between each legend item
-        },
-      },
+			legend: {
+				display: true, // Show the legend
+				position: "bottom", // Position it below the chart
+				labels: {
+					font: {
+						size: 12, // Font size for the legend labels
+						weight: "bold", // Font weight
+						position: "relative",
+						family: "'Excon-medium'",
+					},
+					color: "#000", // Legend label text color
+					boxWidth: 20, // Size of the box next to the label
+					padding: 20, // Spacing between each legend item
+				},
+			},
 		},
 	};
 
@@ -53,9 +54,14 @@ legend: {
 				display: "flex",
 				justifyContent: "center",
 				alignItems: "center",
+				fontFamily: "Excon-medium",
 			}}
 		>
-			<Doughnut data={data} options={options} />
+			<Doughnut
+				data={data}
+				options={options}
+				style={{ fontFamily: "Excon-medium" }}
+			/>
 			{/* Center Text */}
 			<div
 				style={{
@@ -65,6 +71,7 @@ legend: {
 					transform: "translate(-50%, -50%)",
 					fontSize: "16px",
 					fontWeight: "800",
+					fontFamily: "Excon-medium",
 				}}
 			>
 				{karmavalue}
