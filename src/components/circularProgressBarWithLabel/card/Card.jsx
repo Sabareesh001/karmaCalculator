@@ -1,11 +1,12 @@
 import './Card.css';
 
-const Card  = ({image,title})=>{
+const Card  = ({content,title,backgroundColor,borderColor})=>{
     return(
-        <div className='cardContainer'>
-          <img src={image}>
-          </img>
-          <div>
+        <div style={{backgroundColor:backgroundColor,border:borderColor&&`solid ${borderColor}`}} className='cardContainer'>
+          <div className='icon'>
+            {content}
+          </div>
+          <div className='title'>
             {title}
           </div>
         </div>
