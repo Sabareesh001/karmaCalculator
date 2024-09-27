@@ -6,10 +6,7 @@ import surveypage3 from "/src/assets/surveypage3.png";
 import surveypage4 from "/src/assets/surveypage4.png";
 import surveypage5 from "/src/assets/surveypage5.png";
 import surveypage6 from "/src/assets/surveypage6.png";
-import car from "/src/assets/car.png";
-import motor from "/src/assets/Motor Scooter.png";
-import bicycle from "/src/assets/Bicycle.png"
-import level1page2 from "../../components/level1page2/level1page2";
+
 const SurveyPage = () => {
   const [score, setScore] = useState(0);
   const [isNextPage, setIsNextPage] = useState(false);
