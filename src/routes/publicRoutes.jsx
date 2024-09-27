@@ -3,6 +3,7 @@ import InstructionsPage from "../pages/Instructions/InstructionsPage";
 import ReportPage from "../pages/KarmaReport/ReportPage";
 import SurveyPage from "../pages/Survey/SurveyPage";
 
+
 const publicRoutes = [
     {
         path:'/instructions',
