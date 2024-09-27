@@ -1,45 +1,55 @@
 import './InstructionsPage.css'
 import logo from '../../assets/Insrtruction Image/BG1.svg'
 import brain from '../../assets/Insrtruction Image/7718867 copy.svg'
-import co2 from '../../assets/Insrtruction Image/NTU4MzQ0NDIz [Converted] copy@2x.jpg'
-import earth from '../../assets/Insrtruction Image/Group 121090@2x.jpg'
+import co2 from '../../assets/Insrtruction Image/NTU4MzQ0NDIz [Converted] copy.svg'
+import earth from '../../assets/Insrtruction Image/Group 121090.svg'
+import { useNavigate } from 'react-router-dom'
+
 const InstructionsPage = () => {
+  const navigate = useNavigate();
+
+  function handleButtonClick (){
+    navigate('/survey')
+  }
   return (
     <div
       style={{
-        width: '375px',
-        height: '812px',
-        backgroundColor: '#f0f4fa'
+        width: '100%',
+        height: '100%',
+        backgroundColor: '#f0f4fa',
+       
       }}
     >
       <div
         style={{
-          width: '375px',
-          height: '288px',
+         width:'100%',
+          height: '258px',
           position: 'relative',
           backgroundImage: `url(${logo})`,
+          opacity:'1',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
+     
         }}
       >
         <div
           style={{
-            width: '262px',
+            width: '282px',
             height: '54px',
             color: '#0E70EB',
             fontFamily: 'Excon, sans-serif', 
-            fontWeight: 'bold',
+            fontWeight: 'bolder',
             fontSize: '20px',
-            lineHeight: '28px',
+           opacity:'1px',
             textAlign: 'center', 
             letterSpacing: '-0.1px',
             position: 'absolute',
-            top: '190px',
+            marginTop: '150px',
             left: '50%',
             transform: 'translateX(-50%)',
             padding: '10px',
-            borderRadius: '5px'
+            
           }}
         >
           Know & offset your carbon footprints!
@@ -47,7 +57,9 @@ const InstructionsPage = () => {
       </div>
       <div
         style={{
-          width: '335px',
+          width: '305px',
+          marginLeft:'20px',
+          marginRight:'20px',
           height: '369px',
           margin: '0 auto',
           backgroundColor: '#fff',
@@ -63,26 +75,37 @@ const InstructionsPage = () => {
             marginBottom: '70px'
           }}
         >
-          <div style={{ marginLeft: '16px', marginTop: '24px',height:'61px'}}>
-            {' '}
-            <img
-              src={brain}
-              alt=''
-              style={{
-                height: '47.3px',
-                width: '47.19px',
-                backgroundColor: '#FFF5F3',
-                borderRadius: '8px 8px 8px 8px'
-              }}
-            />
-          </div>
+          <div
+  style={{
+    marginLeft: '12px',
+    marginTop: '24px',
+    height: '61px',
+    width: '61px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center', 
+    backgroundColor: '#E2F1E6', 
+    borderRadius: '8px'
+  }}
+>
+  <img
+    src={brain}
+    alt=''
+    style={{
+      height: '59.59px',
+      width: '59.43px',
+      borderRadius: '8px',
+      backgroundColor:'#FFF5F3'
+    }}
+  />
+</div>
           <div style={{ width: '230px', marginLeft: '12px' }}>
             <p
               style={{
-                fontSize: '14px',
+                fontSize: '13px',
                 color: '#030911',
-                fontWeight: 'bold',
-                lineHeight: '18px',
+                fontWeight: '600',
+                
                 fontFamily: 'Sarabun, sans-serif',
                 letterSpacing: '0px',
                 opacity: 1,
@@ -94,11 +117,13 @@ const InstructionsPage = () => {
             >
               Answer Our Question
             </p>
-            <p
+            <span
               style={{
                 color: '#60666F',
-                fontSize: '11px',
-                width: '230px',
+                fontSize: '10.8px',
+                fontFamily: 'Sarabun, sans-serif',
+                lineHeight:'17px',
+                width: '220px',
                 height: '37px',
                 textAlign: 'left',
                 marginTop: '0px'
@@ -106,7 +131,7 @@ const InstructionsPage = () => {
             >
               Vestibulum venenatis fringilla lorem eu finibus. Donec ac nulla
               nec nunc malesuada.
-            </p>
+            </span>
           </div>
         </div>
 
@@ -118,51 +143,63 @@ const InstructionsPage = () => {
             marginBottom: '70px'
           }}
         >
-          <div style={{ marginLeft: '16px', marginTop: '24px',height: '61px', backgroundColor: '#FFF7E8',
-                width: '61px', }}>
-            {' '}
-            <img
-              src={co2}
-              alt=''
-              style={{
-                height: '47.31px',
-                width: '53.19px',
-               
-                borderRadius: '8px 8px 8px 8px'
-              }}
-            />
-          </div>
+          <div
+  style={{
+    marginLeft: '12px',
+    marginTop: '24px',
+    height: '61px',
+    width: '61px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center', 
+    backgroundColor: '#FFF7E8', 
+    borderRadius: '8px'
+  }}
+>
+  <img
+    src={co2}
+    alt=''
+    style={{
+      height: '59.59px',
+      width: '59.43px',
+      borderRadius: '8px',
+      backgroundColor:'#FFF7E8'
+    }}
+  />
+</div>
           <div style={{ width: '230px', marginLeft: '12px' }}>
             <p
               style={{
-                fontSize: '14px',
+                fontSize: '13px',
                 color: '#030911',
-                fontWeight: 'bold',
+                width: '210px', 
+                fontFamily: 'Sarabun, sans-serif',
                 lineHeight: '18px',
                
-                letterSpacing: '0px',
-                opacity: 1,
+               fontWeight:'600',
+               
                 textAlign: 'left',
-                //   marginLeft:'12px',
                 marginBottom: '6px',
                 marginTop: '24px'
               }}
             >
               Know your Carbonfootprint
             </p>
-            <p
+            <span
               style={{
                 color: '#60666F',
-                fontSize: '11px',
-                width: '230px',
-                height: '37px',
+                fontSize: '10.8px',
+                lineHeight:'17px',
+                fontFamily: 'Sarabun, sans-serif',
+                width: '220px',
+                height: '39px',
                 textAlign: 'left',
                 marginTop: '0px'
               }}
             >
               Vestibulum venenatis fringilla lorem eu finibus. Donec ac nulla
               nec nunc malesuada.
-            </p>
+            </span>
           </div>
         </div>
         <div
@@ -173,42 +210,57 @@ const InstructionsPage = () => {
             marginBottom: '70px'
           }}
         >
-          <div style={{ marginLeft: '16px', marginTop: '24px' }}>
-            {' '}
-            <img
-              src={earth}
-              alt=''
-              style={{
-                height: '61px',
-                width: '61px',
-                backgroundColor: '#FFF5F3',
-                borderRadius: '8px 8px 8px 8px'
-              }}
-            />
-          </div>
-          <div style={{ width: '230px', marginLeft: '12px' }}>
+          <div
+  style={{
+    marginLeft: '12px',
+    marginTop: '24px',
+    height: '61px',
+    width: '61px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center', 
+    backgroundColor: '#E2F1E6', 
+    borderRadius: '8px'
+  }}
+>
+  <img
+    src={earth}
+    alt=''
+    style={{
+      height: '59.59px',
+      width: '59.43px',
+      borderRadius: '8px',
+      backgroundColor:'#E2F1E6'
+    }}
+  />
+</div>
+
+          <div style={{ width: '230px',marginLeft:'12px'}}>
             <p
               style={{
-                fontSize: '14px',
+                fontSize: '12px',
                 color: '#030911',
                 fontWeight: 600,
-                lineHeight: '20px',
+               width:'220px',
                 fontFamily: 'Sarabun, sans-serif',
                 letterSpacing: '0px',
                 opacity: 1,
                 textAlign: 'left',
+                fontStyle:'600',
                 //   marginLeft:'12px',
                 marginBottom: '6px',
                 marginTop: '24px'
               }}
             >
-              Answer Our Question
+              Offset it by following the instructions
             </p>
-            <p
+            <span
               style={{
                 color: '#60666F',
-                fontSize: '11px',
-                width: '230px',
+                fontSize: '10.8px',
+                width: '220px',
+                fontFamily: 'Sarabun, sans-serif',
+                lineHeight:'17px',
                 height: '37px',
                 textAlign: 'left',
                 marginTop: '0px',
@@ -217,36 +269,44 @@ const InstructionsPage = () => {
             >
               Vestibulum venenatis fringilla lorem eu finibus. Donec ac nulla
               nec nunc malesuada.
-            </p>
+            </span>
           </div>
         </div>
         <div style={{ display:'flex',marginLeft:'16px' }}>
           <div style={{marginTop:'50px'}}>
             <button
               style={{
-                width: '143px',
+                width: '133px',
                 height: '48px',
                 backgroundColor: '#E6EEFA',
                 color: '#0E70EB',
-                borderRadius:'10px'
+                borderRadius:'10px',
+
+                 border:'none',
+                outline:'none'
               }}
             >
-              <span style={{ fontSize: '14px', letterSpacing: '-0.07px' }}>
+              <span style={{ fontSize: '14px', letterSpacing: '-0.07px',fontWeight:'600' }}>
                 
                 Later
               </span>
             </button>
           </div>
-          <div style={{marginLeft:'16px',marginTop:'50px'}}>
+          <div style={{marginLeft:'12px',marginTop:'50px'}}>
             <button
               style={{
-                width: '143px',
+                width: '133px',
                 height: '48px',
                 backgroundColor: '#0E70EB',
-                color: '#FFFFFF'
-              }}
+                fontFamily: 'Sarabun, sans-serif',
+                color: '#FFFFFF',
+                fontWeight:'semiBold',
+                borderRadius:'8px',
+                border:'none',
+                outline:'none'
+              }} onClick={handleButtonClick}
             >
-              <span style={{ fontSize: '12px', letterSpacing: '-0.07px', }}>
+              <span style={{ fontSize: '14px', letterSpacing: '-0.07px', }}>
                 
                 Calculate & offset
               </span>
