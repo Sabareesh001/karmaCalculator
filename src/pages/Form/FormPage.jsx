@@ -1,13 +1,37 @@
+import React,{useState} from "react";
 import "./FormPage.css";
 import cloud from "../../assets/clouds.svg";
 import trees from "../../assets/Trees.svg";
 import Inputs from "../../components/input";
 import Buttons from "../../components/button";
+import success from "/src/assets/video.mp4";
+import lastBg from "../../assets/lastBg.png";
 
 const FormPage = () => {
+  const [submit, setSubmit] = useState(false); 
+
+  const handleSubmit = () => {
+    setSubmit(true); 
+  };
+
   return (
     <>
       <div className="form-main">
+        {submit ? (
+          <>
+          <div className="bgimage">
+            <img src={lastBg} alt="lastbg" className="background-img"/>
+          </div>
+          <div className="column">
+          <div className="video-container">
+          <video className="video"src={success} autoPlay /> 
+          
+          </div>
+          <div className="success-message">Form submitted successfully</div>
+          </div>
+          </>
+        ) : (
+          <div>
         <div className="background-images">
           <img src={cloud} className="png cloud" />
           <img src={trees} className="png trees" />
@@ -51,12 +75,14 @@ const FormPage = () => {
                 height="48px"
                 background="#1D78EC"
                 borderRadius="8px"
-                onClick=""
+                onClick={handleSubmit}
                 style={{}}
               />
             </div>
           </div>
         </div>
+        </div>
+        )}
       </div>
     </>
   );
