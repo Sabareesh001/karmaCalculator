@@ -7,8 +7,8 @@ const SurveyPage = ()=>{
                 <div>
                     <img src='/src/assets/SurveyPage1.png'/>
                 </div>
-                <div className='inner-container'>
-                    
+                <div className='inner-container '>
+                    <div></div>
                 </div>
 
             </div>
