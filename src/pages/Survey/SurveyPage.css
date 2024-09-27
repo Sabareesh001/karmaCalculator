@@ -1,0 +1,11 @@
+.container{
+    border: 1px solid ;
+    min-height:90vh ;
+    min-width: 24vw;
+}
+
+.inner-container{
+    background-color: white;
+    min-height: 30vh;
+}
+
