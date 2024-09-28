@@ -6,10 +6,17 @@ import surveypage3 from "/src/assets/surveypage3.png";
 import surveypage4 from "/src/assets/surveypage4.png";
 import surveypage5 from "/src/assets/surveypage5.png";
 import surveypage6 from "/src/assets/surveypage6.png";
-import car from "/src/assets/car.png";
-import motor from "/src/assets/Motor Scooter.png";
-import bicycle from "/src/assets/Bicycle.png"
-import level1page2 from "../../components/level1page2/level1page2";
+import bicycle from "/src/assets/Bicycle.png";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import {
+  CircularProgressbarWithChildren,
+  buildStyles,
+} from "react-circular-progressbar";
+import Card from "../../components/circularProgressBarWithLabel/card/Card";
+import Button from "../../components/circularProgressBarWithLabel/card/button/Button";
+import PromptContainer from "./promptContainer/PromptContainer";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import Buttons from "../../components/button";
 const SurveyPage = () => {
   const [score, setScore] = useState(0);
   const [backgroundImages, setBackgroundImages] = useState([
