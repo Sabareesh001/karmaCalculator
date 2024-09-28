@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import "./PromptContainer.css"
 import CardContainer from "../cardContainer/CardContainer";
 import SliderWithBlocks from "../../../components/circularProgressBarWithLabel/card/slider/Slider";
+import { replace, useNavigate } from "react-router-dom";
 
-const PromptContainer = ({ currStep,setCurrStep,setIsLast}) => {
+const PromptContainer = ({ isLast,currStep,setIsLast,navigateNextQuestion}) => {
   const [questions] = useState([
    [ { q: "Choose the vehicles you use for commuting?" },
     { q: "How many Vehicles do you own?" },
@@ -166,7 +167,10 @@ const PromptContainer = ({ currStep,setCurrStep,setIsLast}) => {
   useEffect(()=>{
     const decimalStep = Math.floor((currStep * 10) % 10);
     if((decimalStep+1)>questions[Math.floor(currStep)-1].length){
-          setCurrStep(Math.floor(currStep)+1)
+          navigateNextQuestion();
+          if(isLast){
+            setIsLast(false);
+          }
     }
     else if(Math.floor(currStep)===questions.length){
       setIsLast(true);

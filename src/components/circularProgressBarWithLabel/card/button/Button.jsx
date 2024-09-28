@@ -1,6 +1,6 @@
 import './Button.css';
 
-const Button = ({content,onClick})=>{
+const Button = ({content,onClick,type})=>{
     return(
         <div className='buttonContainer' onClick={onClick}>
             {content}

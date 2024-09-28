@@ -2,6 +2,7 @@
     height:100%;
     width: 100%;
     display: flex;
+    overflow: hidden;
     flex-direction: column;
 }
 
@@ -12,6 +13,8 @@
 .inner-container .imageContainer{
      width: 100%;
      height: 107%;
+     position: relative;
+     top: -55px;
      
 }
 
@@ -50,10 +53,12 @@
     width: 100%;
 }
 .question{
-    font-weight: 600;
-    font-size: 17px;
-    margin-top: 50px;
-    margin-left: 7px;
+    position: relative;
+    padding: 0px 10px;
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+    top: -12px;
 }
 
 .options{
@@ -68,6 +73,9 @@
     padding: 10px;
     display: flex;
     gap: 10px;
+    position: relative;
+    top: -20px;
+    font-size: 14px;
 }
 .buttonsContainer>div{
     flex: 1;
@@ -75,9 +83,32 @@
 
 .stepPageContainer{
     flex: 1;
+    position: relative;
+    top: -20px;
+}
+
+.scoreContainer{
+    color: black;
+    position: relative;
+    display: flex;
+    top: 40px;
+    z-index: 1;
+    /* background-color: white; */
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+}
+
+.score{
+    display: flex;
+    padding: 0px;
+    justify-content: center;
+    align-items: center;
 }
 
 
-
-
-
+.arrowUp{
+    font-size: 50px;
+    display:flex;
+    align-items: center;
+}
