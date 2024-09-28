@@ -4,7 +4,7 @@ import cloud from "../../assets/clouds.svg";
 import trees from "../../assets/Trees.svg";
 import Inputs from "../../components/input";
 import Buttons from "../../components/button";
-import success from "/src/assets/video.mp4";
+import success from "/src/assets/success.gif";
 import lastBg from "../../assets/lastBg.png";
 
 const FormPage = () => {
