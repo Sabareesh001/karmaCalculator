@@ -139,16 +139,16 @@ const PromptContainer = ({ isLast,currStep,setIsLast,navigateNextQuestion}) => {
             color: "#FFF4F3",
             border: "#EB7E74",
           },
-          {
-            name: "Air cooler",
-            color: "#FFF4F3",
-            border: "#EB7E74",
-          },
-          {
-            name: "Mixer/Grinder",
-            color: "#FFF4F3",
-            border: "#EB7E74",
-          },
+          // {
+          //   name: "Air cooler",
+          //   color: "#FFF4F3",
+          //   border: "#EB7E74",
+          // },
+          // {
+          //   name: "Mixer/Grinder",
+          //   color: "#FFF4F3",
+          //   border: "#EB7E74",
+          // },
         ],
       },
     ],
