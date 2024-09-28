@@ -182,7 +182,7 @@ const PromptContainer = ({ isLast,currStep,setIsLast,navigateNextQuestion}) => {
   const currentStepData = stepData[Math.floor(currStep)-1][decimalStep];
 
   return (
-    <div>
+    <div className="promptContainer">
       <div className="question">{currentQuestion}</div>
       {currentStepData?.type === "card" && (
         <CardContainer cardData={currentStepData.data} />

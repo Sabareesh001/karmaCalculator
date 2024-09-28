@@ -72,22 +72,8 @@ const SurveyPage = () => {
     navigate(-1);
   };
   return (
-    <div className="container">
-      <div className="inner-container ">
-        <div className="scoreContainer">
-          <div className="score">
-            <div className="arrowUp">
-              <ArrowDropUpIcon color="error" fontSize="inherit" />
-            </div>{" "}
-            {score.toFixed(2)} ton CO2
-          </div>
-        </div>
-
-        <div className="imageContainer">
-          {backgroundImages && (
-            <img
-              src={
-                backgroundImages?.find((data, i) => {
+    <div style={{
+      backgroundImage:`url( ${ backgroundImages?.find((data, i) => {
                   if (i < backgroundImages.length - 1) {
                     return (
                       score >= data.score &&
@@ -96,10 +82,16 @@ const SurveyPage = () => {
                   } else {
                     return true;
                   }
-                }).img_url
-              }
-            />
-          )}
+                }).img_url})`
+    }} className="container">
+      <div className="inner-container ">
+        <div className="scoreContainer">
+          <div className="score">
+            <div className="arrowUp">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12.2048 7.29258L18.1189 15.7412C18.49 16.2715 18.1107 17 17.4635 17L6.53652 17C5.88931 17 5.50998 16.2715 5.88114 15.7412L11.7952 7.29258C11.8947 7.1504 12.1053 7.1504 12.2048 7.29258Z" fill="#ff0000"></path> </g></svg>
+            </div>
+            {score.toFixed(2)} ton CO2
+          </div>
         </div>
       </div>
       <div className="questionContainer">
@@ -130,7 +122,9 @@ const SurveyPage = () => {
             currStep={currStep}
           />
         </div>
-        <div className="buttonsContainer">
+       
+      </div>
+      <div className="buttonsContainer">
           {!isLast && currStep > 1 && currStep < totalSteps + 1 && (
             <Buttons
               type="light"
@@ -165,7 +159,6 @@ const SurveyPage = () => {
             />
           )}
         </div>
-      </div>
     </div>
   );
 };
