@@ -72,6 +72,7 @@
     padding: 10px;
     display: flex;
     gap: 10px;
+    padding-bottom: 20px;
     font-size: 14px;
 }
 .buttonsContainer>div{
