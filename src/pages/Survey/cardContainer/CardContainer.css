@@ -1,0 +1,13 @@
+.cardsContainer{
+    display: flex;
+    padding: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    row-gap: 10px;
+}
+
+.card{
+   width: 30%;
+}

@@ -1,0 +1,20 @@
+.sliderContainer{
+    width: 100%;
+    padding: 0px 30px 0px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.valueButtonContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.valueButton{
+    background-color: rgb(255, 233, 191);
+    color: orange;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 5px;
+}

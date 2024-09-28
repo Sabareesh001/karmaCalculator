@@ -81,21 +81,27 @@
     transform: translateY(500px);
     animation: slideInForm 0.4s ease-in-out 2.5s forwards;
   }
-  .plantation-form .head h5{
+  .plantation-form .head{
+    display: flex;
+    flex-direction: column;
+  }
+  .plantation-form .head .form-title{
     margin: 10px 0 ;
+    color: #000;
     font-size: 14px;
     text-align: center;
   }
-  .plantation-form .head p{
-    font-size: 12px;
+  .plantation-form .head .form-discription{
+    font-size: 11px;
     text-align: center;
+    font-weight: lighter;
     color: #60666F;
   }
   .plantation-form .form{
     position: relative;
-    display: flex;
+    display: flex;  
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 35px;
     height: 430px;
     gap: 15px;
   }
@@ -114,19 +120,20 @@
 
   .bgimage {
     position: absolute;
-    top: 0;
+    top: 80px;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 1;
+    object-fit: contain;
   }
   
   
 .video-container {
-    width: 139px !important;
-    height: 139px !important; 
+    width: 139px ;
+    height: 139px; 
     position: absolute;
-    top: 40%; 
+    top: 20%; 
     left: 50%; 
     transform: translate(-50%, -50%); 
     z-index: 2;
@@ -143,7 +150,7 @@
     object-fit: cover; 
     max-width: 100%;    
     max-height: 100%;  
-    border: none; /* Ensure no border around video */
+    border: none;
   }
   
   .column {
@@ -152,14 +159,28 @@
     align-items: center;
     position: relative; 
     z-index: 3; 
+    height: 300px;
     top: 50%;
     transform: translateY(-50%); 
   }
   
   .success-message {
-    margin-top: 160px; 
+    position: relative;
+    top: 100px;
     text-align: center; 
     font-size: 16px; 
     color: #06090c; 
     font-weight: 700;
   }
+  .success-gif {
+    width: 100%; /* Adjust size based on your design */
+    height: auto;
+  }
+  
+  .success-message {
+    font-size: 18px;
+    color: #000;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
