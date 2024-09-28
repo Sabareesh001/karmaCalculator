@@ -26,19 +26,19 @@ const GaugeChart = ({ karmavalue ,values}) => {
 		responsive: true,
 		maintainAspectRatio: false,
 		plugins: {
-			tooltip: { enabled: false }, // Disable tooltip
+			tooltip: { enabled: false },
 legend: {
-        display: true,  // Show the legend
-        position: "bottom",  // Position it below the chart
+        display: true,  
+        position: "bottom",
         labels: {
           font: {
-            size: 12,  // Font size for the legend labels
-            weight: "bold",  // Font weight
+            size: 10, 
+            weight: "bold", 
 				position: "relative",
           },
-          color: "#000",  // Legend label text color
-          boxWidth: 20,  // Size of the box next to the label
-          padding: 20,   // Spacing between each legend item
+          color: "#000",
+          boxWidth: 15, 
+          padding: 15,
         },
       },
 		},
@@ -48,15 +48,14 @@ legend: {
 		<div
 			style={{
 				position: "relative",
-				width: "100%",
+				width: "90%",
 				height: "90%",
 				display: "flex",
 				justifyContent: "center",
 				alignItems: "center",
 			}}
 		>
-			<Doughnut data={data} options={options} />
-			{/* Center Text */}
+			<Doughnut data={data} options={options}/>
 			<div
 				style={{
 					position: "absolute",

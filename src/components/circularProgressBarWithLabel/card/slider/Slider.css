@@ -5,7 +5,12 @@
     flex-direction: column;
     gap: 30px;
 }
+.s1{
+    border-left: 3px solid #1D78EC;
+    border-right: 3px solid #1D78EC;
+    height: 30px;
 
+}
 .valueButtonContainer{
     display: flex;
     justify-content: center;

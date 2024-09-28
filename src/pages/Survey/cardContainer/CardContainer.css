@@ -4,10 +4,10 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    row-gap: 10px;
+    gap: 20px;
+    row-gap: 15px;
 }
 
 .card{
-   width: 30%;
+   width: 35%;
 }

@@ -1,113 +1,186 @@
 @font-face {
-  font-family: "Excon";
-  src: url("/path-to-your-font/Excon.ttf") format("truetype"); /* Adjust the path */
-}
-.form-main {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  background-image: linear-gradient(#c7ebf9, #d5f3ff, #ffffff);
-  overflow: hidden;
-}
-.background-images {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.background-images img {
-  position: absolute;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.background-images .cloud {
-  top: 50px;
-  left: 0;
-  z-index: -1;
-}
-
-.background-images .trees {
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-}
-
-.text-content {
-  position: relative;
-  top:190px;
-  z-index: 2;
-  color: #000;
-  font-weight: 600;
-  text-align: center;
-  font-size: 18px;
-  line-height: 22px;
-  padding: 15px;
-  font-family: 'Excon', sans-serif;
-  opacity: 0;
-  transform: translateY(500px);
-  animation: slideInText 0.4s ease-in-out 0.1s forwards, fadeOutText 0.5s ease-in-out 2.5s forwards;
-}
-
-@keyframes slideInText {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    font-family: "Excon";
+    src: url("/path-to-your-font/Excon.ttf") format("truetype"); /* Adjust the path */
   }
-}
-
-@keyframes fadeOutText {
-  to {
-    opacity: 0;
-    transform: translateY(-250px);  }
-}
-
-.plantation-form {
-  position: relative;
-  margin: auto 18px;
-  background-color: white;
-  border-radius: 16px;
-  padding:20px ;
-  text-align: center;
-  font-family: 'Excon', sans-serif;
-  top: -10px;
-  height: 550px;
-  z-index: 2;
-  opacity: 0;
-  transform: translateY(500px);
-  animation: slideInForm 0.4s ease-in-out 2.5s forwards;
-}
-.plantation-form .head h5{
-  margin: 10px 0 ;
-  font-size: 14px;
-  text-align: center;
-}
-.plantation-form .head p{
-  font-size: 12px;
-  text-align: center;
-  color: #60666F;
-}
-.plantation-form .form{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-  height: 430px;
-  gap: 15px;
-}
-.submit-btn{
-  position: absolute;
-    bottom: 10px;
+  .form-main {
+    position: relative;
+    height: 100%;
     width: 100%;
-}
-
-@keyframes slideInForm {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    background-image: linear-gradient(#c7ebf9, #d5f3ff, #ffffff);
+    overflow: hidden;
   }
-}
+  .background-images {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  .background-images img {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .background-images .cloud {
+    top: 50px;
+    left: 0;
+    z-index: -1;
+  }
+  
+  .background-images .trees {
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+  }
+  
+  .text-content {
+    position: relative;
+    top:190px;
+    z-index: 2;
+    color: #000;
+    font-weight: 600;
+    text-align: center;
+    font-size: 18px;
+    line-height: 22px;
+    padding: 15px;
+    font-family: 'Excon', sans-serif;
+    opacity: 0;
+    transform: translateY(500px);
+    animation: slideInText 0.4s ease-in-out 0.1s forwards, fadeOutText 0.5s ease-in-out 2.5s forwards;
+  }
+  
+  @keyframes slideInText {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeOutText {
+    to {
+      opacity: 0;
+      transform: translateY(-250px);  }
+  }
+  
+  .plantation-form {
+    position: relative;
+    margin: auto 18px;
+    background-color: white;
+    border-radius: 16px;
+    padding:20px ;
+    text-align: center;
+    font-family: 'Excon', sans-serif;
+    top: -10px;
+    height: 550px;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(500px);
+    animation: slideInForm 0.4s ease-in-out 2.5s forwards;
+  }
+  .plantation-form .head{
+    display: flex;
+    flex-direction: column;
+  }
+  .plantation-form .head .form-title{
+    margin: 10px 0 ;
+    color: #000;
+    font-size: 14px;
+    text-align: center;
+  }
+  .plantation-form .head .form-discription{
+    font-size: 11px;
+    text-align: center;
+    font-weight: lighter;
+    color: #60666F;
+  }
+  .plantation-form .form{
+    position: relative;
+    display: flex;  
+    flex-direction: column;
+    margin-top: 35px;
+    height: 430px;
+    gap: 15px;
+  }
+  .submit-btn{
+    position: absolute;
+      bottom: 10px;
+      width: 100%;
+  }
+  
+  @keyframes slideInForm {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .bgimage {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    object-fit: contain;
+  }
+  
+  
+.video-container {
+    width: 139px ;
+    height: 139px; 
+    position: absolute;
+    top: 20%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent; 
+  }
+  
+  .video {
+    width: 139px;  
+    height: 139px; 
+    border-radius: 10px;
+    object-fit: cover; 
+    max-width: 100%;    
+    max-height: 100%;  
+    border: none;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; 
+    z-index: 3; 
+    height: 300px;
+    top: 50%;
+    transform: translateY(-50%); 
+  }
+  
+  .success-message {
+    position: relative;
+    top: 100px;
+    text-align: center; 
+    font-size: 16px; 
+    color: #06090c; 
+    font-weight: 700;
+  }
+  .success-gif {
+    width: 100%; /* Adjust size based on your design */
+    height: auto;
+  }
+  
+  .success-message {
+    font-size: 18px;
+    color: #000;
+    text-align: center;
+    margin-top: 20px;
+  }
+  

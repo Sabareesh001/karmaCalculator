@@ -139,16 +139,16 @@ const PromptContainer = ({ isLast,currStep,setIsLast,navigateNextQuestion}) => {
             color: "#FFF4F3",
             border: "#EB7E74",
           },
-          {
-            name: "Air cooler",
-            color: "#FFF4F3",
-            border: "#EB7E74",
-          },
-          {
-            name: "Mixer/Grinder",
-            color: "#FFF4F3",
-            border: "#EB7E74",
-          },
+          // {
+          //   name: "Air cooler",
+          //   color: "#FFF4F3",
+          //   border: "#EB7E74",
+          // },
+          // {
+          //   name: "Mixer/Grinder",
+          //   color: "#FFF4F3",
+          //   border: "#EB7E74",
+          // },
         ],
       },
     ],
@@ -188,14 +188,17 @@ const PromptContainer = ({ isLast,currStep,setIsLast,navigateNextQuestion}) => {
         <CardContainer cardData={currentStepData.data} />
       )}
       {currentStepData?.type === "slider" && (
-        <SliderWithBlocks
+        <div className="slider2">
+        <SliderWithBlocks className="s1"
           start={currentStepData.data.start}
           end={currentStepData.data.end}
           blockInterval={currentStepData.data.blockInterval}
           labelText={currentStepData.data.labelText}
           collectionType={currentStepData.data.collectionType}
         />
-      )}
+        </div>
+      )
+      }
     </div>
   );
 };

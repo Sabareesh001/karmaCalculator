@@ -7,21 +7,22 @@ import SVGComponent2 from "../../assets/SVGComponent2";
 import tree from "../../assets/Deciduous Tree.png";
 import GaugeChart from "./graph";
 import { Link } from "react-router-dom";
+import Buttons from "../../components/button";
 
 const ReportPage = () => {
 	return (
 		<div className="parent" style={{ backgroundImage: `url(${bdImg})` }}>
 			<div className="head">
-				<h3>Summary</h3>
+				<h3 style={{color:"#000"}}>Summary</h3>
 			</div>
 			<div className="body">
 				<div className="Report">
 					<SVGComponent className="svg" />
 					<div className="container">
 						<div className="conTitle">
-							<h5>Your annual carbon footprint</h5>
+							<h5 style={{color:"#000"}}>Your annual carbon footprint</h5>
 						</div>
-						<div className="Graph">
+						<div className="Graph" style={{color:"#000"}}>
 							<GaugeChart karmavalue="18 ton CO2" values={[60, 20, 30]} />
 						</div>
 						<div className="GraphReport">
@@ -43,19 +44,19 @@ const ReportPage = () => {
 							<img src={tree}></img>
 						</div>
 						<div className="Tag">
-							<h6>Offset your excess Carbon footprint by</h6>
+							<h6 style={{color:"#000"}}>Offset your excess Carbon footprint by</h6>
 							<h4>Planting 15 Saplings</h4>
 						</div>
 						<div className="Submit">
 							<Link to="/form">
-								<button>Plant now to offset</button>
+								<Buttons text="Plant now to offset" background="#1b9863" color="#fff" fontSize="12px"/>
 							</Link>
 						</div>
 					</div>
 				</div>
 				<div className="Remaind">
-					<Link to="/form">
-						<button>Remind Me Later</button>
+					<Link to="/instructions">
+						<button style={{color:"#0E70EB"}}>Remind Me Later</button>
 					</Link>
 				</div>
 			</div>
