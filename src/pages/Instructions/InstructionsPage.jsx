@@ -1,9 +1,10 @@
-import './InstructionsPage.css';
-import logo from '../../assets/Insrtruction Image/BG1.svg';
-import brain from '../../assets/Insrtruction Image/7718867 copy.svg';
-import co2 from '../../assets/Insrtruction Image/NTU4MzQ0NDIz [Converted] copy.svg';
-import earth from '../../assets/Insrtruction Image/Group 121090.svg';
-import { useNavigate } from 'react-router-dom';
+import "./InstructionsPage.css";
+import logo from "../../assets/Insrtruction Image/BG1.svg";
+import brain from "../../assets/Insrtruction Image/7718867 copy.svg";
+import co2 from "../../assets/Insrtruction Image/NTU4MzQ0NDIz [Converted] copy.svg";
+import earth from "../../assets/Insrtruction Image/Group 121090.svg";
+import { useNavigate } from "react-router-dom";
+import Buttons from "../../components/button";
 
 const InstructionsPage = () => {
   const navigate = useNavigate();
@@ -65,17 +66,31 @@ const InstructionsPage = () => {
         </div>
 
         <div className="instruction-button-container">
-          <button className="instruction-button instruction-button-later">
-            <span className="instruction-button-text">Later</span>
-          </button>
-          <button
+          <Buttons
+            className="instruction-button instruction-button-later"
+            text="Later"
+            background="#E6EEFA"
+            height="48px"
+            margin="40px 0 0 0"
+            width="120px"
+            fontSize="13px"
+            borderRadius="10px"
+            border="none"
+            color="#0E70EB"
+            fontWeight="600"
+          />
+          <Buttons
             className="instruction-button instruction-button-calculate"
             onClick={handleButtonClick}
-          >
-            <span className="instruction-button-text">
-              Calculate & offset
-            </span>
-          </button>
+            text={"Calculate & offset"}
+            background="#1D78EC"
+            height="48px"
+            margin="40px 0 0 15px"
+            width="143px"
+            fontSize="13px"
+            borderRadius="10px"
+            color="#fff"
+          />
         </div>
       </div>
     </div>

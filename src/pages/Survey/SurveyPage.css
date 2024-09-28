@@ -1,3 +1,7 @@
+@font-face {
+    font-family: "Excon";
+    src: url("/path-to-your-font/Excon.ttf") format("truetype"); /* Adjust the path */
+  }
 .container{
     height:100%;
     width: 100%;
@@ -93,7 +97,6 @@
     display: flex;
     top: 40px;
     z-index: 1;
-    /* background-color: white; */
     font-weight: bold;
     justify-content: center;
     align-items: center;
@@ -102,6 +105,8 @@
 .score{
     display: flex;
     padding: 0px;
+    font-weight: 800;
+    font-family: 'Excon', sans-serif;
     justify-content: center;
     align-items: center;
 }

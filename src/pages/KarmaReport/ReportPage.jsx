@@ -7,6 +7,7 @@ import SVGComponent2 from "../../assets/SVGComponent2";
 import tree from "../../assets/Deciduous Tree.png";
 import GaugeChart from "./graph";
 import { Link } from "react-router-dom";
+import Buttons from "../../components/button";
 
 const ReportPage = () => {
 	return (
@@ -48,13 +49,13 @@ const ReportPage = () => {
 						</div>
 						<div className="Submit">
 							<Link to="/form">
-								<button>Plant now to offset</button>
+								<Buttons text="Plant now to offset" background="#1b9863" color="#fff" fontSize="12px"/>
 							</Link>
 						</div>
 					</div>
 				</div>
 				<div className="Remaind">
-					<Link to="/form">
+					<Link to="/instructions">
 						<button>Remind Me Later</button>
 					</Link>
 				</div>
