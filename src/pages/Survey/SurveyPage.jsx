@@ -6,12 +6,8 @@ import surveypage3 from "/src/assets/surveypage3.png";
 import surveypage4 from "/src/assets/surveypage4.png";
 import surveypage5 from "/src/assets/surveypage5.png";
 import surveypage6 from "/src/assets/surveypage6.png";
-<<<<<<< HEAD
 import bicycle from "/src/assets/Bicycle.png";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
-=======
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
->>>>>>> 4be9da9f447bde63d633975cd72c0c52e0b8a835
 import {
   CircularProgressbarWithChildren,
   buildStyles,
