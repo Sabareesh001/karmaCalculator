@@ -30,7 +30,9 @@ const SliderWithBlocks = ({ blockInterval, start, end,labelText,collectionType})
     }, [blockInterval, start, end]);
   return (
     <div className='sliderContainer'>
-      <Slider
+      <div className='s1'>
+
+      <Slider 
         sx={{
           width: "100%",
         }}
@@ -42,6 +44,7 @@ const SliderWithBlocks = ({ blockInterval, start, end,labelText,collectionType})
         min={start}
         max={end}
       />
+      </div>
       <div className='valueButtonContainer'>
           <div className='valueButton'>
               {value + ` ${collectionType?collectionType:''}`}
