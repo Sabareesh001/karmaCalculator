@@ -68,8 +68,25 @@ const SurveyPage = () => {
   };
 
   const handleBack = () => {
-    navigate(-1);
+    
+    if (currStep > 1) {
+    
+      if (currStep === 2) {
+        setScore((prev) => prev - 0.70);
+        setSearchParams({ page: 1.3 }); 
+      } else if (currStep === 3 || currStep === 4) {
+        setScore((prev) => prev - 0.70);
+        const prevStep = (currStep - 1).toFixed(1);
+        setSearchParams({ page: prevStep });
+      } else {
+
+        setScore((prev) => prev - 0.35);
+        const prevStep = (currStep-0.1).toFixed(1)
+        setSearchParams({ page: prevStep });
+      }
+    }
   };
+  
   return (
     <div className="container">
       <div className="inner-container ">
