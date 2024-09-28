@@ -56,46 +56,94 @@ const SurveyPage = () => {
 
   }
   return (
-    <>
-    <div>
-      <div className="container">
-        <div className="inner-container ">
-          <div className="imageContainer">
-            {
-              <img
-                src={
-                  backgroundImages?.find((data) => {
-                    return data.score === score;
-                  }).img_url
-                }
-              />
-            }
-          </div>
-          <div className="question-container">
-            <div className="question">
-              Choose the vehicle you use for commuting?
+    <div style={{
+      backgroundImage:`url( ${ backgroundImages?.find((data, i) => {
+                  if (i < backgroundImages.length - 1) {
+                    return (
+                      score >= data.score &&
+                      score <= backgroundImages[i + 1].score
+                    );
+                  } else {
+                    return true;
+                  }
+                }).img_url})`
+    }} className="container">
+      <div className="inner-container ">
+        <div className="scoreContainer">
+          <div className="score">
+            <div className="arrowUp">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12.2048 7.29258L18.1189 15.7412C18.49 16.2715 18.1107 17 17.4635 17L6.53652 17C5.88931 17 5.50998 16.2715 5.88114 15.7412L11.7952 7.29258C11.8947 7.1504 12.1053 7.1504 12.2048 7.29258Z" fill="#ff0000"></path> </g></svg>
             </div>
-            <div className="options">
-              <div className="bicylce">
-                <img src={bicycle} alt="bicycle"/>
-                <div style={{paddingTop:'7px'}}>Cycle</div>
-              </div>
-              <div className="two-wheeler">
-              <img src={motor} alt="bicycle"/>
-              <div style={{paddingTop:'7px'}}>Two-wheeler</div>
-              </div>
-              <div className="car">
-              <img src={car} alt="bicycle"/>
-              <div style={{paddingTop:'7px'}}>Car</div>
-              </div>
-              </div>
-            </div>
-            <div className="next" onClick={handleNext}>Next</div>
+            {score.toFixed(2)} ton CO2
           </div>
         </div>
       </div>
-    
-    </>
+      <div className="questionContainer">
+        <div className="progressBarContainer">
+          <div className="progressBar">
+            <CircularProgressbarWithChildren
+              maxValue={totalSteps}
+              value={Math.floor(currStep)}
+              styles={buildStyles({
+                pathTransitionDuration: 0.5,
+                strokeWidth: 10,
+                rotation: 0,
+                trailColor: "#FFF4E4",
+                pathColor: "#FEA062",
+              })}
+            >
+              <div className="stepDisplay">{`${Math.floor(
+                currStep
+              )}/${totalSteps}`}</div>
+            </CircularProgressbarWithChildren>
+          </div>
+        </div>
+        <div className="stepPageContainer">
+          <PromptContainer
+            isLast={isLast}
+            setIsLast={setIsLast}
+            navigateNextQuestion={navigateNextQuestion}
+            currStep={currStep}
+          />
+        </div>
+       
+      </div>
+      <div className="buttonsContainer">
+          {!isLast && currStep > 1 && currStep < totalSteps + 1 && (
+            <Buttons
+              type="light"
+              onClick={handleBack}
+              text={"Back"}
+              width="100%"
+              background="#E6EEFA"
+              color="#0E70EB"
+              borderRadius="10px"
+              border="none"
+            />
+          )}
+          {!isLast && currStep < totalSteps + 1 && (
+            <Buttons
+              onClick={handleNext}
+              text={"Next"}
+              width="100%"
+              background="#1D78EC"
+              color="#fff"
+              borderRadius="10px"
+            />
+          )}
+
+          {isLast && (
+            <Buttons
+              onClick={() => navigate("/karmareport")}
+              text={"Calculate Carbon Footprint"}
+              width="100%"
+              background="#1D78EC"
+              color="#fff"
+              borderRadius="10px"
+            />
+          )}
+        </div>
+    </div>
   );
 };
 

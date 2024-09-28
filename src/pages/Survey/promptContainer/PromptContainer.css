@@ -1,0 +1,9 @@
+.promptContainer{
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+    /* justify-content:; */
+    gap: 30px;
+    height: 100%;
+    width: 100%;
+}
