@@ -13,16 +13,16 @@ const ReportPage = () => {
 	return (
 		<div className="parent" style={{ backgroundImage: `url(${bdImg})` }}>
 			<div className="head">
-				<h3>Summary</h3>
+				<h3 style={{color:"#000"}}>Summary</h3>
 			</div>
 			<div className="body">
 				<div className="Report">
 					<SVGComponent className="svg" />
 					<div className="container">
 						<div className="conTitle">
-							<h5>Your annual carbon footprint</h5>
+							<h5 style={{color:"#000"}}>Your annual carbon footprint</h5>
 						</div>
-						<div className="Graph">
+						<div className="Graph" style={{color:"#000"}}>
 							<GaugeChart karmavalue="18 ton CO2" values={[60, 20, 30]} />
 						</div>
 						<div className="GraphReport">
@@ -44,7 +44,7 @@ const ReportPage = () => {
 							<img src={tree}></img>
 						</div>
 						<div className="Tag">
-							<h6>Offset your excess Carbon footprint by</h6>
+							<h6 style={{color:"#000"}}>Offset your excess Carbon footprint by</h6>
 							<h4>Planting 15 Saplings</h4>
 						</div>
 						<div className="Submit">
@@ -56,7 +56,7 @@ const ReportPage = () => {
 				</div>
 				<div className="Remaind">
 					<Link to="/instructions">
-						<button>Remind Me Later</button>
+						<button style={{color:"#0E70EB"}}>Remind Me Later</button>
 					</Link>
 				</div>
 			</div>

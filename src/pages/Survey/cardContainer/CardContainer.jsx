@@ -1,17 +1,24 @@
+import React, {useState} from 'react';
 import Card from '../../../components/circularProgressBarWithLabel/card/Card';
 import './CardContainer.css';
 
 
 const CardContainer = ({cardData})=>{
+
+  const [clickedCards,setClickedCards] = useState(null);
+
+  const handleBorder = (index) => {
+    setClickedCards(index);
+  }
     return(
         <div className="cardsContainer">
       {
-        cardData.map((data) => (
-            <div className="card">
+        cardData.map((data, index) => (
+            <div className="card" onClick={() => handleBorder (index)} key={index}>
                 <Card
                   content={data.icon}
                   title={data.name}
-                  borderColor={data.border}
+                  borderColor={clickedCards === index ? data.border : ''}
                   backgroundColor={data.color}
                 />
             </div> 
