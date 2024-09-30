@@ -24,6 +24,11 @@ const ReportPage = () => {
 						</div>
 						<div className="Graph">
 							<GaugeChart karmavalue="18 ton CO2" values={[60, 20, 30]} />
+						  <div className="legend">
+						    <div className="colorConatiner"><div className="colors  yellow"></div><div className="title">Commute</div></div>
+						    <div className="colorConatiner"><div className="colors  red"></div><div className="title">Food</div></div>
+						   <div className="colorConatiner"><div className="colors  green"></div><div className="title">Appliances</div></div>
+						  </div>
 						</div>
 						<div className="GraphReport">
 							<div className="RepContainer">

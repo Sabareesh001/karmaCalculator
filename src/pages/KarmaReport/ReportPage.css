@@ -61,6 +61,39 @@
 	align-items: center;
 	justify-content: center;
 	height: 58%;
+	flex-direction: column;
+	.legend{
+	  height: 35%;
+	  width: 90%;
+	  display: flex;
+	  justify-content: space-around;
+	  .colorConatiner{
+	    height: 100%;
+	    display: flex;
+	    align-items: center ;
+	    justify-content: space-evenly;
+	    flex-direction: row;
+	    width: 30%;
+	    font-size: 0.6em;
+	    font-weight: 800;
+	font-family: "Sarabun", sans-serif;
+	    .colors{
+	      height: 40%;
+	      width: 20%;
+	      border-radius: 2px;
+	    }
+	    .yellow{
+	      background-color: #FFBF00;
+	    }
+	    .red{
+	      background-color: #FF5F5F;
+	      margin-left: 10%;
+	    }
+	    .green{
+	      background-color: #5BE12C;
+	    }
+	  }
+	}
 }
 
 .GraphReport {

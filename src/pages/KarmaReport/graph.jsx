@@ -6,7 +6,6 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const GaugeChart = ({ karmavalue, values }) => {
 	const data = {
-		labels: ["Commute", "Food", "Appliances"],
 		datasets: [
 			{
 				data: values, // Data for the sections (Commute, Food, Appliances)
@@ -23,7 +22,7 @@ const GaugeChart = ({ karmavalue, values }) => {
 	};
 
 	const options = {
-		responsive: true,
+		responsive: false,
 		maintainAspectRatio: false,
 		plugins: {
 			tooltip: { enabled: false }, // Disable tooltip
@@ -43,6 +42,8 @@ const GaugeChart = ({ karmavalue, values }) => {
 				},
 			},
 		},
+plugins: {
+      tooltip: { enabled: false },}
 	};
 
 	return (
@@ -52,6 +53,9 @@ const GaugeChart = ({ karmavalue, values }) => {
 				width: "100%",
 				height: "90%",
 				display: "flex",
+				width: "60%",
+				height: "80%",
+				display: "fle6x",
 				justifyContent: "center",
 				alignItems: "center",
 				fontFamily: "Excon-medium",
@@ -63,15 +67,18 @@ const GaugeChart = ({ karmavalue, values }) => {
 				style={{ fontFamily: "Excon-medium" }}
 			/>
 			{/* Center Text */}
+			<Doughnut data={data} options={options} style={{ width: "100%" }} />
 			<div
 				style={{
 					position: "absolute",
-					top: "50%",
+					top: "75%",
 					left: "50%",
 					transform: "translate(-50%, -50%)",
 					fontSize: "16px",
 					fontWeight: "800",
 					fontFamily: "Excon-medium",
+					fontSize: "18px",
+					fontWeight: "1000",
 				}}
 			>
 				{karmavalue}
