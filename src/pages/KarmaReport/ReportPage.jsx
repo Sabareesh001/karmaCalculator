@@ -13,17 +13,22 @@ const ReportPage = () => {
 	return (
 		<div className="parent" style={{ backgroundImage: `url(${bdImg})` }}>
 			<div className="head">
-				<h3 style={{color:"#000"}}>Summary</h3>
+				<h3 style={{ color: "#000" }}>Summary</h3>
 			</div>
 			<div className="body">
 				<div className="Report">
 					<SVGComponent className="svg" />
 					<div className="container">
 						<div className="conTitle">
-							<h5 style={{color:"#000"}}>Your annual carbon footprint</h5>
+							<h5 style={{ color: "#000" }}>Your annual carbon footprint</h5>
 						</div>
-						<div className="Graph" style={{color:"#000"}}>
+						<div className="Graph" style={{ color: "#000" }}>
 							<GaugeChart karmavalue="18 ton CO2" values={[60, 20, 30]} />
+						  <div className="Legend">
+						    <div className="Color "><div className="color yellow"></div ><div className="text">Commute</div></div>
+						    <div className="Color "><div className="color red"></div><div className="text">Food</div ></div>
+						    <div className="Color "><div className="color green"></div><div className="text">Appliances</div></div>
+						  </div>
 						</div>
 						<div className="GraphReport">
 							<div className="RepContainer">
@@ -44,19 +49,26 @@ const ReportPage = () => {
 							<img src={tree}></img>
 						</div>
 						<div className="Tag">
-							<h6 style={{color:"#000"}}>Offset your excess Carbon footprint by</h6>
+							<h6 style={{ color: "#000" }}>
+								Offset your excess Carbon footprint by
+							</h6>
 							<h4>Planting 15 Saplings</h4>
 						</div>
 						<div className="Submit">
 							<Link to="/form">
-								<Buttons text="Plant now to offset" background="#1b9863" color="#fff" fontSize="12px"/>
+								<Buttons
+									text="Plant now to offset"
+									background="#1b9863"
+									color="#fff"
+									fontSize="12px"
+								/>
 							</Link>
 						</div>
 					</div>
 				</div>
 				<div className="Remaind">
 					<Link to="/instructions">
-						<button style={{color:"#0E70EB"}}>Remind Me Later</button>
+						<button style={{ color: "#0E70EB" }}>Remind Me Later</button>
 					</Link>
 				</div>
 			</div>
