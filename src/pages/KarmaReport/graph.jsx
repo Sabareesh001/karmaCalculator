@@ -4,9 +4,8 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const GaugeChart = ({ karmavalue ,values}) => {
+const GaugeChart = ({ karmavalue, values }) => {
 	const data = {
-		labels: ["Commute", "Food", "Appliances"],
 		datasets: [
 			{
 				data: values, // Data for the sections (Commute, Food, Appliances)
@@ -55,17 +54,24 @@ legend: {
 				display: "flex",
 				justifyContent: "center",
 				alignItems: "center",
+				fontFamily: "Excon-medium",
 			}}
 		>
-			<Doughnut data={data} options={options}/>
+			<Doughnut
+				data={data}
+				options={options}
+			  style={{ fontFamily: "Excon-medium", width: "80%" ,height: "80%" }}
+			/>
+			{/* Center Text */}
 			<div
 				style={{
 					position: "absolute",
-					top: "50%",
+					top: "70%",
 					left: "50%",
 					transform: "translate(-50%, -50%)",
 					fontSize: "16px",
 					fontWeight: "800",
+					fontFamily: "Excon-medium",
 				}}
 			>
 				{karmavalue}
