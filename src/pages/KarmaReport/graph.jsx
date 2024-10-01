@@ -23,22 +23,24 @@ const GaugeChart = ({ karmavalue ,values}) => {
 	};
 
 	const options = {
+	
 		responsive: true,
-		maintainAspectRatio: false,
+		// maintainAspectRatio: false,
 		plugins: {
+		
 			tooltip: { enabled: false },
 legend: {
         display: true,  
         position: "bottom",
         labels: {
+			display:'fl',
           font: {
             size: 10, 
             weight: "bold", 
-				position: "relative",
           },
           color: "#000",
           boxWidth: 15, 
-          padding: 15,
+        //   padding: 15,
         },
       },
 		},
@@ -48,8 +50,8 @@ legend: {
 		<div
 			style={{
 				position: "relative",
-				width: "90%",
-				height: "90%",
+				width: "100%",
+				height: "100%",
 				display: "flex",
 				justifyContent: "center",
 				alignItems: "center",

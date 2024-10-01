@@ -1,11 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './Slider.css';
 import Slider from '@mui/material/Slider';
+import { SurveyDataContext } from '../../../../contexts/surveyData/SurveyDataContext';
 
-const SliderWithBlocks = ({ blockInterval, start, end,labelText,collectionType}) => {
+const SliderWithBlocks = ({ blockInterval, start, end,labelText,collectionType,selectedSliderData,setValidateNext}) => {
     const [formattedValues, setFormattedValues] = useState([]);
+    const {cookies,setSurveyData} = useContext(SurveyDataContext)
     const [value,setValue] = useState(start);
-    
+    useEffect(()=>{
+         setValidateNext(true);
+    },[setValidateNext])
+    useEffect(()=>{
+       if(selectedSliderData[0] !== false){
+        setValue(selectedSliderData[0]);
+       }
+    },[selectedSliderData])
     useEffect(() => {
       const totalSteps = blockInterval?((end - start) / blockInterval + 1):2;
       const newArray = Array.from({ length: totalSteps }, (_, i) => {
@@ -37,10 +46,13 @@ const SliderWithBlocks = ({ blockInterval, start, end,labelText,collectionType})
           width: "100%",
         }}
         value={value}
-        onChange={(e)=>{setValue(e.target.value)}}
+        onChange={(e)=>{
+           selectedSliderData[0]=e.target.value; 
+           setSurveyData(cookies.surveyData);
+
+          setValue(e.target.value); }}
         marks={formattedValues}
         valueLabelDisplay="auto"
-        step={blockInterval}
         min={start}
         max={end}
       />

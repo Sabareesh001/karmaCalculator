@@ -2,7 +2,7 @@ import FormPage from "../pages/Form/FormPage";
 import InstructionsPage from "../pages/Instructions/InstructionsPage";
 import ReportPage from "../pages/KarmaReport/ReportPage";
 import SurveyPage from "../pages/Survey/SurveyPage";
-
+import {SurveyDataContextProvider} from '../contexts/surveyData/SurveyDataContext'
 
 const publicRoutes = [
     {
@@ -11,7 +11,8 @@ const publicRoutes = [
     },
     {
         path:'/survey',
-        element:<SurveyPage/>
+        element:<SurveyDataContextProvider component={<SurveyPage/>} />
+        
     },
     {
         path:'/karmaReport',
