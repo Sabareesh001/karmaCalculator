@@ -59,54 +59,10 @@
 .Graph {
 	display: flex;
 	align-items: center;
+	height: 60%;
 	justify-content: center;
 	flex-direction: column;
-	height: 58%;
-	gap: 2%;
 
-	.Legend {
-		height: 20%;
-		width: 90%;
-		display: flex;
-		align-items: center;
-		justify-content: space-around;
-
-		.Color {
-			width: 30%;
-			height: 100%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-
-			.color {
-				height: 50%;
-				width: 22%;
-				background: red;
-				border-radius: 1px;
-			}
-
-			.text {
-				font-size: 0.6em;
-				margin-top: 2%;
-				margin-left: 10%;
-				font-weight: 800;
-				text-align: center;
-				font-family: "Sarabun", sans-serif;
-			}
-
-			.red {
-				background-color: #ff5f5f;
-			}
-
-			.yellow {
-				background-color: #ffbf00;
-			}
-
-			.green {
-				background-color: #5be12c;
-			}
-		}
-	}
 }
 
 .GraphReport {

@@ -1,11 +1,12 @@
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-
+import './graph.css'
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const GaugeChart = ({ karmavalue, values }) => {
 	const data = {
+		// labels:['Commute','Food','Appliances'],
 		datasets: [
 			{
 				data: values, // Data for the sections (Commute, Food, Appliances)
@@ -22,60 +23,36 @@ const GaugeChart = ({ karmavalue, values }) => {
 	};
 
 	const options = {
-	
-		responsive: true,
-		// maintainAspectRatio: false,
-		plugins: {
+	  responsive:true,
+	  maintainAspectRatio: false
 		
-			tooltip: { enabled: false },
-legend: {
-        display: true,  
-        position: "bottom",
-        labels: {
-			display:'fl',
-          font: {
-            size: 10, 
-            weight: "bold", 
-          },
-          color: "#000",
-          boxWidth: 15, 
-        //   padding: 15,
-        },
-      },
-		},
 	};
 
 	return (
 		<div
-			style={{
-				position: "relative",
-				width: "100%",
-				height: "100%",
-				display: "flex",
-				justifyContent: "center",
-				alignItems: "center",
-				fontFamily: "Excon-medium",
-			}}
+         className="doughnutContainer"
 		>
+			<div className="doughnutCanvas">
 			<Doughnut
 				data={data}
 				options={options}
-			  style={{ fontFamily: "Excon-medium", width: "80%" ,height: "80%" }}
+				height={90}
+				width={100}
+			    
 			/>
+			</div>
+		
 			{/* Center Text */}
 			<div
-				style={{
-					position: "absolute",
-					top: "70%",
-					left: "50%",
-					transform: "translate(-50%, -50%)",
-					fontSize: "16px",
-					fontWeight: "800",
-					fontFamily: "Excon-medium",
-				}}
+				className="karmaValue"
 			>
 				{karmavalue}
 			</div>
+			  <div className="Legend">
+						    <div className="Color "><div className="color yellow"></div ><div className="text">Commute</div></div>
+						    <div className="Color "><div className="color red"></div><div className="text">Food</div ></div>
+						    <div className="Color "><div className="color green"></div><div className="text">Appliances</div></div>
+						  </div>
 		</div>
 	);
 };

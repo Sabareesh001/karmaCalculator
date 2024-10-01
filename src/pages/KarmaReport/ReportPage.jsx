@@ -24,11 +24,7 @@ const ReportPage = () => {
 						</div>
 						<div className="Graph" style={{ color: "#000" }}>
 							<GaugeChart karmavalue="18 ton CO2" values={[60, 20, 30]} />
-						  <div className="Legend">
-						    <div className="Color "><div className="color yellow"></div ><div className="text">Commute</div></div>
-						    <div className="Color "><div className="color red"></div><div className="text">Food</div ></div>
-						    <div className="Color "><div className="color green"></div><div className="text">Appliances</div></div>
-						  </div>
+						
 						</div>
 						<div className="GraphReport">
 							<div className="RepContainer">
