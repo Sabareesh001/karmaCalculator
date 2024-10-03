@@ -259,6 +259,7 @@ const SurveyPage = () => {
         {isLast && (
           <Buttons
             onClick={ () => {
+              console.log(surveyPostData)
               axios
                 .post(`${apiHost}/api/carbonsurvey`, surveyPostData)
                 .then((response) => {

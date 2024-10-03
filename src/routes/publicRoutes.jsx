@@ -16,7 +16,7 @@ const publicRoutes = [
     },
     {
         path:'/karmaReport',
-        element:<ReportPage/>
+        element:<SurveyDataContextProvider component={<ReportPage/>} />
     },
     {
         path:'/form',
