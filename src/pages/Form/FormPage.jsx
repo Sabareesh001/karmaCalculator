@@ -24,53 +24,97 @@ const FormPage = () => {
   const [submit, setSubmit] = useState(false);
   const [showSuccessImage, setShowSuccessImage] = useState(false);
 
+  // Track whether the user has clicked submit
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
-    // Clear error when user types
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      [name]: "",
-    }));
+
+    // If the form has been submitted, validate the field as the user types
+    if (hasSubmitted) {
+      validate({ [name]: value });
+    }
   };
 
-  const validateForm = () => {
-    let validationErrors = {};
+  // Single validation function for both submit and onChange
+  const validate = (fieldValues = formData) => {
+    let validationErrors = { ...errors }; // Copy existing errors
     const phoneNumberPattern = /^[0-9]{10}$/;
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!formData.name || /\d/.test(formData.name)) {
-      validationErrors.name = "required";
+    if ("name" in fieldValues) {
+      if (!fieldValues.name || /\d/.test(fieldValues.name)) {
+        validationErrors.name = "Name is required and cannot contain numbers.";
+      } else {
+        delete validationErrors.name;
+      }
     }
-    if (!formData.phone_number) {
-      validationErrors.phone_number = "Phone .";
-    } else if (!phoneNumberPattern.test(formData.phone_number)) {
-      validationErrors.phone_number = "Phone number must be 10 digits.";
+
+    if ("phone_number" in fieldValues) {
+      if (!fieldValues.phone_number) {
+        validationErrors.phone_number = "Phone number is required.";
+      } else if (!phoneNumberPattern.test(fieldValues.phone_number)) {
+        validationErrors.phone_number = "Phone number must be 10 digits.";
+      } else {
+        delete validationErrors.phone_number;
+      }
     }
-    if (!formData.e_mail || !emailPattern.test(formData.e_mail)) {
-      validationErrors.e_mail = "Valid email is required.";
+
+    if ("e_mail" in fieldValues) {
+      if (!fieldValues.e_mail) {
+        validationErrors.e_mail = "Email is required.";
+      } 
+      else if ( !emailPattern.test(fieldValues.e_mail)) {
+        validationErrors.e_mail = "! invalid Valid email.";
+      } 
+      else {
+        delete validationErrors.e_mail;
+      }
     }
-    if (!formData.location || /\d/.test(formData.location)) {
-      validationErrors.location = "required";
+
+    if ("location" in fieldValues) {
+      if (!fieldValues.location || /\d/.test(fieldValues.location)) {
+        validationErrors.location = "Location is required.";
+      } else {
+        delete validationErrors.location;
+      }
     }
-    if (!formData.tree_count || formData.tree_count <= 0) {
-      validationErrors.tree_count = "Tree count must be atleast 1.";
+
+    if ("tree_count" in fieldValues) {
+      if (!fieldValues.tree_count) {
+        validationErrors.tree_count = "Tree count required";
+      }
+      else if (fieldValues.tree_count == 0) {
+        validationErrors.tree_count = "Tree count must be at least 1.";
+      }
+      else if (fieldValues.tree_count <= 0) {
+        validationErrors.tree_count = "Tree count not be negative";
+      } else {
+        delete validationErrors.tree_count;
+      }
     }
-    if (!formData.purpose || /\d/.test(formData.purpose)) {
-      validationErrors.purpose = "required";
+
+    if ("purpose" in fieldValues) {
+      if (!fieldValues.purpose || /\d/.test(fieldValues.purpose)) {
+        validationErrors.purpose = "Purpose is required.";
+      } else {
+        delete validationErrors.purpose;
+      }
     }
 
     setErrors(validationErrors);
-
-    // Return true if there are no validation errors
+    // Return whether the form is valid
     return Object.keys(validationErrors).length === 0;
   };
 
   const handleSubmit = async () => {
-    if (validateForm()) {
+    setHasSubmitted(true); // Set to true when submit is clicked
+
+    if (validate()) {
       setSubmit(true);
       try {
         const response = await fetch("http://localhost:8000/api/insert", {
