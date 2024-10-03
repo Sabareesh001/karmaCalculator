@@ -1,0 +1,70 @@
+	.Legend {
+		width: 100%;
+		padding:0px 20px;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+
+		.Color {
+			width: 30%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			.color {
+				height: 80%;
+				width: 22%;
+				background: red;
+				border-radius: 1px;
+			}
+
+			.text {
+				font-size: 0.6em;
+				margin-top: 2%;
+				margin-left: 10%;
+				font-weight: 800;
+				text-align: center;
+				font-family: "Sarabun", sans-serif;
+			}
+
+			.red {
+				background-color: #ff5f5f;
+			}
+
+			.yellow {
+				background-color: #ffbf00;
+			}
+
+			.green {
+				background-color: #5be12c;
+			}
+		}
+	}
+
+
+    .doughnutContainer{
+        display: flex;
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        width: 100%;
+        gap: 10px;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .doughnutCanvas{
+        height: 80%;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .karmaValue{
+        position: absolute;
+        font-size: 1em;
+        font-weight: 600;
+        font-family: Excon-medium;
+        transform: translate(0%,250%);
+    }
