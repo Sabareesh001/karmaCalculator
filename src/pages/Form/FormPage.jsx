@@ -7,10 +7,90 @@ import Buttons from "../../components/button";
 import success from "/src/assets/success.gif";
 import lastBg from "../../assets/lastBg.png";
 import successimage from "../../assets/success-image.png";
+import { TextField } from "@mui/material";
 
 const FormPage = () => {
+  const [formData, setFormData] = useState({
+    survey_id: 1,
+    name: "",
+    phone_number: "",
+    e_mail: "",
+    location: "",
+    tree_count: "",
+    purpose: "",
+  });
+
+  const [errors, setErrors] = useState({});
   const [submit, setSubmit] = useState(false);
   const [showSuccessImage, setShowSuccessImage] = useState(false);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+    // Clear error when user types
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: "",
+    }));
+  };
+
+  const validateForm = () => {
+    let validationErrors = {};
+    const phoneNumberPattern = /^[0-9]{10}$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!formData.name || /\d/.test(formData.name)) {
+      validationErrors.name = "required";
+    }
+    if (!formData.phone_number) {
+      validationErrors.phone_number = "Phone .";
+    } else if (!phoneNumberPattern.test(formData.phone_number)) {
+      validationErrors.phone_number = "Phone number must be 10 digits.";
+    }
+    if (!formData.e_mail || !emailPattern.test(formData.e_mail)) {
+      validationErrors.e_mail = "Valid email is required.";
+    }
+    if (!formData.location || /\d/.test(formData.location)) {
+      validationErrors.location = "required";
+    }
+    if (!formData.tree_count || formData.tree_count <= 0) {
+      validationErrors.tree_count = "Tree count must be atleast 1.";
+    }
+    if (!formData.purpose || /\d/.test(formData.purpose)) {
+      validationErrors.purpose = "required";
+    }
+
+    setErrors(validationErrors);
+
+    // Return true if there are no validation errors
+    return Object.keys(validationErrors).length === 0;
+  };
+
+  const handleSubmit = async () => {
+    if (validateForm()) {
+      setSubmit(true);
+      try {
+        const response = await fetch("http://localhost:8000/api/insert", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify([formData]),
+        });
+
+        if (response.ok) {
+          console.log("Form data submitted successfully");
+        } else {
+          console.error("Error submitting form data");
+        }
+      } catch (error) {
+        console.error("Error connecting to the backend:", error);
+      }
+    }
+  };
 
   useEffect(() => {
     if (submit) {
@@ -22,33 +102,33 @@ const FormPage = () => {
     }
   }, [submit]);
 
-  const handleSubmit = () => {
-    setSubmit(true);
-  };
-
   return (
     <>
       <div className="form-main">
         {submit ? (
-          <>
-            <div style={{ width: "100%", height: "100%", background: "#f0f4fa" }}>
-              <div className="bgimage">
-                <img src={lastBg} alt="lastbg" className="background-img" />
-              </div>
-              <div className="column">
-                <div className="video-container">
-                  {!showSuccessImage ? (
-                    <img src={success} alt="Success GIF" className="success-gif" />
-                  ) : (
-                    <img src={successimage} alt="Success Image" className="success-image" />
-                  )}
-                </div>
-                <div className="success-message">
-                  Form submitted successfully
-                </div>
-              </div>
+          <div style={{ width: "100%", height: "100%", background: "#f0f4fa" }}>
+            <div className="bgimage">
+              <img src={lastBg} alt="lastbg" className="background-img" />
             </div>
-          </>
+            <div className="column">
+              <div className="video-container">
+                {!showSuccessImage ? (
+                  <img
+                    src={success}
+                    alt="Success GIF"
+                    className="success-gif"
+                  />
+                ) : (
+                  <img
+                    src={successimage}
+                    alt="Success Image"
+                    className="success-image"
+                  />
+                )}
+              </div>
+              <div className="success-message">Form submitted successfully</div>
+            </div>
+          </div>
         ) : (
           <div>
             <div className="background-images">
@@ -65,23 +145,171 @@ const FormPage = () => {
             <div className="plantation-form">
               <div className="head">
                 <p className="form-title">Fill out this form</p>
-                <div className="form-discription">
+                <span
+                  className="form-description"
+                  style={{ fontWeight: "lighter" }}
+                >
                   Our team will reach out to you to help with your tree
                   plantation
-                </div>
+                </span>
               </div>
               <div className="form">
-                <Inputs placeholder="Your Name" label="Your Name" />
-                <Inputs placeholder="Phone number" label="Phone number" />
-                <Inputs placeholder="Email" label="Email" />
-                <Inputs placeholder="Location" label="Location" />
-                <Inputs
-                  placeholder="How many trees you want to plant?"
-                  label="How many trees you want to plant?"
+                <TextField
+                  id="outlined-textarea"
+                  size="small"
+                  label={
+                    <span>
+                      Your Name<span style={{ color: "red" }}> *</span>
+                    </span>
+                  }
+                  placeholder="Your Name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  className="custom-textfield"
+                  error={!!errors.name}
+                  FormHelperTextProps={{
+                    style: { fontSize: "5px" },
+                  }}
+                  sx={{
+                    "& .MuiOutlinedInput-root.Mui-error": {
+                      "& fieldset": {
+                        borderColor: "red",
+                      },
+                    },
+                  }}
                 />
-                <Inputs
-                  placeholder="Name to be planted on behalf on?"
-                  label="Name to be planted on behalf on?"
+                <TextField
+                  id="outlined-textarea"
+                  size="small"
+                  label={
+                    <span>
+                      Phone number<span style={{ color: "red" }}> *</span>
+                    </span>
+                  }
+                  placeholder="Phone number"
+                  name="phone_number"
+                  value={formData.phone_number}
+                  onChange={handleInputChange}
+                  className="custom-textfield"
+                  error={!!errors.phone_number}
+                  helperText={errors.phone_number}
+                  FormHelperTextProps={{
+                    style: { fontSize: "8px" },
+                  }}
+                  sx={{
+                    "& .MuiOutlinedInput-root.Mui-error": {
+                      "& fieldset": {
+                        borderColor: "red",
+                      },
+                    },
+                  }}
+                />
+                <TextField
+                  id="outlined-textarea"
+                  size="small"
+                  label={
+                    <span>
+                      Email<span style={{ color: "red" }}> *</span>
+                    </span>
+                  }
+                  placeholder="Email"
+                  name="e_mail"
+                  value={formData.e_mail}
+                  onChange={handleInputChange}
+                  className="custom-textfield"
+                  error={!!errors.e_mail}
+                  helperText={errors.e_mail}
+                  FormHelperTextProps={{
+                    style: { fontSize: "8px" },
+                  }}
+                  sx={{
+                    "& .MuiOutlinedInput-root.Mui-error": {
+                      "& fieldset": {
+                        borderColor: "red",
+                      },
+                    },
+                  }}
+                />
+                <TextField
+                  id="outlined-textarea"
+                  size="small"
+                  label={
+                    <span>
+                      Location<span style={{ color: "red" }}> *</span>
+                    </span>
+                  }
+                  placeholder="Location"
+                  name="location"
+                  value={formData.location}
+                  onChange={handleInputChange}
+                  className="custom-textfield"
+                  error={!!errors.location}
+                  sx={{
+                    "& .MuiOutlinedInput-root.Mui-error": {
+                      "& fieldset": {
+                        borderColor: "red",
+                      },
+                    },
+                  }}
+                />
+                <TextField
+                  id="outlined-textarea"
+                  size="small"
+                  label={
+                    <span>
+                      How many trees you want to plant?
+                      <span style={{ color: "red" }}> *</span>
+                    </span>
+                  }
+                  placeholder="How many trees you want to plant?"
+                  name="tree_count"
+                  value={formData.tree_count}
+                  onChange={handleInputChange}
+                  className="custom-textfield"
+                  type="number"
+                  error={!!errors.tree_count}
+                  helperText={errors.tree_count}
+                  FormHelperTextProps={{
+                    style: { fontSize: "8px" },
+                  }}
+                  inputProps={{
+                    min: 1,
+                  }}
+                  sx={{
+                    "& .MuiOutlinedInput-root.Mui-error": {
+                      "& fieldset": {
+                        borderColor: "red",
+                      },
+                    },
+                  }}
+                />
+                <TextField
+                  id="outlined-textarea"
+                  size="small"
+                  label={
+                    <span>
+                      Purpose of planting
+                      <span style={{ color: "red" }}> *</span>
+                    </span>
+                  }
+                  placeholder="Purpose of planting"
+                  name="purpose"
+                  value={formData.purpose}
+                  onChange={handleInputChange}
+                  className="custom-textfield"
+                  error={!!errors.purpose}
+                  helperText={errors.purpose}
+                  FormHelperTextProps={{
+                    style: { fontSize: "0px" },
+                  }}
+                  sx={{
+                    "& .MuiOutlinedInput-root.Mui-error": {
+                      "& fieldset": {
+                        borderColor: "red",
+                      },
+                    },
+                  }}
                 />
                 <div className="submit-btn">
                   <Buttons
