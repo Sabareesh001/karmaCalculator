@@ -20,21 +20,21 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import Buttons from "../../components/button";
 import { useCookies } from "react-cookie";
 import { SurveyDataContext } from "../../contexts/surveyData/SurveyDataContext";
+import axios from "axios";
+import { apiHost } from "../../config/config";
 const SurveyPage = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [currSection, setCurrSection] = useState(1);
-  const {cookies,setLastSurveyPosition} = useContext(SurveyDataContext);
-  const [score, setScore] = useState(15);
+  const { cookies, setLastSurveyPosition, score, surveyPostData } =
+    useContext(SurveyDataContext);
   const [currStep, setCurrStep] = useState(1);
   const [validateNext, setValidateNext] = useState(false);
   const [isLast, setIsLast] = useState(false);
   const totalSteps = 4;
   useEffect(() => {
-   
-    if(cookies.lastSurveyPosition){
+    if (cookies.lastSurveyPosition) {
       console.log(
-
         searchParams?.get("step")
           ? Number(
               CryptoJS.AES.decrypt(
@@ -44,57 +44,41 @@ const SurveyPage = () => {
             )
           : ""
       );
-   try {
+      try {
+        const nextStep = searchParams?.get("step")
+          ? Number(
+              CryptoJS.AES.decrypt(
+                searchParams?.get("step"),
+                "Karma007"
+              ).toString(CryptoJS.enc.Utf8)
+            )
+          : 1;
+        if (nextStep > cookies.lastSurveyPosition.step) {
+          setCurrStep(cookies.lastSurveyPosition.step);
+        } else {
+          setCurrStep(nextStep === 0 ? 1 : nextStep);
+        }
 
-    const nextStep =    searchParams?.get("step")
-    ? Number(
-        CryptoJS.AES.decrypt(
-          searchParams?.get("step"),
-          "Karma007"
-        ).toString(CryptoJS.enc.Utf8)
-      )
-    : 1;
-    if(nextStep>cookies.lastSurveyPosition.step){
-         setCurrStep(cookies.lastSurveyPosition.step);
+        const nextSection = searchParams?.get("section")
+          ? Number(
+              CryptoJS.AES.decrypt(
+                searchParams?.get("section"),
+                "Karma007"
+              ).toString(CryptoJS.enc.Utf8)
+            )
+          : 1;
+        if (nextStep > cookies.lastSurveyPosition.step) {
+          setCurrSection(cookies.lastSurveyPosition.section);
+        } else {
+          setCurrSection(nextSection === 0 ? 1 : nextSection);
+        }
+      } catch (error) {
+        console.log(error);
+        setCurrStep(1);
+        setCurrSection(1);
+      }
     }
-    else{
-      setCurrStep(
-        nextStep===0?1:nextStep
-       ); 
-    }
-  
-    const nextSection =searchParams?.get("section")
-    ? Number(
-        CryptoJS.AES.decrypt(
-          searchParams?.get("section"),
-          "Karma007"
-        ).toString(CryptoJS.enc.Utf8)
-      )
-    : 1;
-    if(nextStep>cookies.lastSurveyPosition.step){
-      setCurrSection(cookies.lastSurveyPosition.section);
-    }
-    else{
-      setCurrSection(
-        nextSection===0?1:nextSection
-      );
-    }
-
-    
-   } catch (error) {
-    console.log(error)
-      setCurrStep(1);
-      setCurrSection(1);
-   }
-    }
-     
-   
-  }, [searchParams,cookies.lastSurveyPosition]);
-
-
-
-
-
+  }, [searchParams, cookies.lastSurveyPosition]);
 
   const encryptData = (data) => {
     console.log(CryptoJS.AES.encrypt(data, "Karma007").toString());
@@ -103,15 +87,15 @@ const SurveyPage = () => {
 
   const [backgroundImages, setBackgroundImages] = useState([
     {
-      score: 15,
+      score: 0,
       img_url: surveypage1,
     },
     {
-      score: 16,
+      score: 10,
       img_url: surveypage2,
     },
     {
-      score: 16.5,
+      score: 15,
       img_url: surveypage3,
     },
     {
@@ -130,8 +114,7 @@ const SurveyPage = () => {
 
   const navigateNextQuestion = () => {
     if (validateNext) {
-      setScore((prev) => prev + 0.35);
-      setLastSurveyPosition({step:currStep+1,section:1})
+      setLastSurveyPosition({ step: currStep + 1, section: 1 });
       setSearchParams(
         { step: encryptData(`${currStep + 1}`), section: encryptData(`1`) },
         { replace: true }
@@ -139,29 +122,26 @@ const SurveyPage = () => {
     }
   };
 
-  useEffect(()=>{
-       if(cookies.lastSurveyPosition){
+  useEffect(() => {
+    if (cookies.lastSurveyPosition) {
+      if (cookies.lastSurveyPosition.step < currStep) {
+        setCurrStep(cookies.lastSurveyPosition.step);
+      }
+      if (cookies.lastSurveyPosition.section < currStep) {
+        setCurrSection(cookies.lastSurveyPosition.section);
+      }
+    }
+  }, [cookies.lastSurveyPosition]);
 
-        if(cookies.lastSurveyPosition.step<currStep){
-          setCurrStep(cookies.lastSurveyPosition.step);
-        }
-        if(cookies.lastSurveyPosition.section<currStep){
-          setCurrSection(cookies.lastSurveyPosition.section);
-
-        }
-       }
-  },[cookies.lastSurveyPosition])
-
-  useEffect(()=>{
-        if(!validateNext && (currStep>1||currSection>1)){
-          setLastSurveyPosition({step:currStep,section:currSection})
-        }
-  },[validateNext])
+  useEffect(() => {
+    if (!validateNext && (currStep > 1 || currSection > 1)) {
+      setLastSurveyPosition({ step: currStep, section: currSection });
+    }
+  }, [validateNext]);
 
   const handleNext = () => {
     if (validateNext) {
-      setScore((prev) => prev + 0.35);
-      setLastSurveyPosition({step:currStep,section:currSection+1})
+      setLastSurveyPosition({ step: currStep, section: currSection + 1 });
       setSearchParams({
         step: encryptData(`${currStep}`),
         section: encryptData(`${currSection + 1}`),
@@ -239,8 +219,8 @@ const SurveyPage = () => {
         </div>
         <div className="stepPageContainer">
           <PromptContainer
-          setCurrStep={setCurrStep}
-          setCurrSection={setCurrSection}
+            setCurrStep={setCurrStep}
+            setCurrSection={setCurrSection}
             isLast={isLast}
             setValidateNext={setValidateNext}
             setIsLast={setIsLast}
@@ -278,7 +258,15 @@ const SurveyPage = () => {
 
         {isLast && (
           <Buttons
-            onClick={() => navigate("/karmareport")}
+            onClick={ () => {
+              axios
+                .post(`${apiHost}/api/carbonsurvey`, surveyPostData)
+                .then((response) => {
+                  if (response.status === 201) {
+                    navigate("/karmareport");
+                  }
+                });
+            }}
             text={"Calculate Carbon Footprint"}
             width="100%"
             background="#1D78EC"

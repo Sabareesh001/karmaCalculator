@@ -7,6 +7,7 @@ const SliderWithBlocks = ({ blockInterval, start, end,labelText,collectionType,s
     const [formattedValues, setFormattedValues] = useState([]);
     const {cookies,setSurveyData} = useContext(SurveyDataContext)
     const [value,setValue] = useState(start);
+ 
     useEffect(()=>{
          setValidateNext(true);
     },[setValidateNext])
@@ -43,14 +44,23 @@ const SliderWithBlocks = ({ blockInterval, start, end,labelText,collectionType,s
 
       <Slider 
         sx={{
-          width: "100%",
+          color: '#1976d2',
+          height: 8,        
+         
+          '& .MuiSlider-rail': {
+            opacity: 0.5,  
+            backgroundColor: '#bfbfbf',
+          },
+          '& .MuiSlider-track': {
+            backgroundColor: '#1976d2'
+          },
         }}
         value={value}
         onChange={(e)=>{
-           selectedSliderData[0]=e.target.value; 
-           setSurveyData(cookies.surveyData);
-
-          setValue(e.target.value); }}
+          setValue(e.target.value); 
+          selectedSliderData[0]=e.target.value; 
+      setSurveyData(cookies.surveyData); 
+        }}
         marks={formattedValues}
         valueLabelDisplay="auto"
         min={start}
