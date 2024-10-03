@@ -40,32 +40,35 @@ const SliderWithBlocks = ({ blockInterval, start, end,labelText,collectionType,s
     }, [blockInterval, start, end]);
   return (
     <div className='sliderContainer'>
-      <div className='s1'>
-
-      <Slider 
-        sx={{
-          color: '#1976d2',
-          height: 8,        
-         
-          '& .MuiSlider-rail': {
-            opacity: 0.5,  
-            backgroundColor: '#bfbfbf',
-          },
-          '& .MuiSlider-track': {
-            backgroundColor: '#1976d2'
-          },
-        }}
-        value={value}
-        onChange={(e)=>{
-          setValue(e.target.value); 
-          selectedSliderData[0]=e.target.value; 
-      setSurveyData(cookies.surveyData); 
-        }}
-        marks={formattedValues}
-        valueLabelDisplay="auto"
-        min={start}
-        max={end}
-      />
+      <div className='slider'>
+        <div className='s1'>      </div>
+        <Slider
+          sx={{
+            width: "100%",
+            color:"#0e70eb",
+            '& .MuiSlider-thumb': {
+              border: '2px solid currentColor',
+            },
+            '& .MuiSlider-rail': {
+              opacity: 0.5,
+              backgroundColor: '#bfbfbf',
+            },
+            '& .MuiSlider-track': {
+              backgroundColor: '#1976d2',
+            },
+          }}
+          value={value}
+          onChange={(e)=>{
+            setValue(e.target.value);
+            selectedSliderData[0]=e.target.value;
+        setSurveyData(cookies.surveyData);
+          }}
+          marks={formattedValues}
+          valueLabelDisplay="auto"
+          min={start}
+          max={end}
+        />
+        <div className='s2'></div>
       </div>
       <div className='valueButtonContainer'>
           <div className='valueButton'>
